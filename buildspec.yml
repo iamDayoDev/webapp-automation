@@ -5,10 +5,11 @@ phases:
     commands:
       - echo Getting CodeArtifact auth token...
       - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
-          --domain webapp-demo \
-          --domain-owner 905418286373 \
-          --query authorizationToken \
-          --output text)
+  --domain webapp-demo \
+  --domain-owner 905418286373 \
+  --query authorizationToken \
+  --output text)
+
   build:
     commands:
       - echo Build started on `date`
