@@ -10,6 +10,8 @@
 
 <p>This is my NextWork web application working!</p>
 
+<p>This Project is teaching me so many concepts on project automation</p>
+
 </body>
 
 </html>
