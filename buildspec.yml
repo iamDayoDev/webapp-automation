@@ -1,29 +1,23 @@
 version: 0.2
 
 phases:
-  install:
-    runtime-versions:
-      java: corretto8
   pre_build:
     commands:
-      - echo Initializing environment
       - echo Getting CodeArtifact auth token...
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain webapp-demo --domain-owner 905418286373 --region us-east-1 --query authorizationToken --output text`
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain webapp-demo --domain-owner 905418286373 --query authorizationToken --output text)
+    
 
   build:
     commands:
       - echo Build started on `date`
-      - mvn -s settings.xml compile
-  post_build:
-    commands:
-      - echo Build completed on `date`
       - mvn -s settings.xml package
-      - mvn -s settings.xml test
+      
+
 artifacts:
   files:
-    - target/*.war
+    - target/webapp-build.war
+    - appspec.yml
+    - scripts/**/*
   discard-paths: no
-
-
 
 
