@@ -8,7 +8,7 @@ phases:
     commands:
       - echo Initializing environment
       - echo Getting CodeArtifact auth token...
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain webapp-demo --domain-owner 905418286373 --region us-east-2 --query authorizationToken --output text`
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain webapp-demo --domain-owner 905418286373 --region us-east-1 --query authorizationToken --output text`
 
   build:
     commands:
@@ -22,4 +22,5 @@ artifacts:
   files:
     - target/nextwork-web-project.war
   discard-paths: no
+
 
