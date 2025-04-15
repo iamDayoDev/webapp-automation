@@ -24,3 +24,16 @@ sudo tee /etc/apache2/sites-available/tomcat_manager.conf > /dev/null <<EOF
     ProxyPassReverse / http://localhost:8080/nextwork-web-project/
 </VirtualHost>
 EOF
+
+# Install dependencies
+sudo apt install -y ruby wget
+
+# Download and install the CodeDeploy agent
+cd /home/ubuntu
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
+
+# Start and enable the agent
+sudo systemctl start codedeploy-agent
+sudo systemctl enable codedeploy-agent
