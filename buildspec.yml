@@ -11,10 +11,10 @@ phases:
     commands:
       - echo Build started on `date`
       - mvn -s settings.xml package
-
+      - ls -R target
 artifacts:
   files:
-    - target/*.war
+    - target/webapp-build.war
 
 
 
